@@ -4,13 +4,15 @@ const elementById = (id) => {
 
 const handleSearch = () => {
   const keyword = elementById("keyword");
-  console.log(keyword.value);
+  const artistContainer = elementById("artists");
+  const albumContainer = elementById("albums");
   const url = `https://theaudiodb.com/api/v1/json/2/search.php?s=${keyword.value}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => showArtists(data));
-  const artistContainer = elementById("artists");
   artistContainer.innerHTML = "";
+  albumContainer.innerHTML = "";
+  keyword.value = "";
 };
 
 const showArtists = (data) => {
@@ -50,6 +52,8 @@ const fetchAlbums = (id) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => showAlbum(data));
+  const artistContainer = elementById("artists");
+  artistContainer.innerHTML = "";
 };
 
 const showAlbum = ({ album }) => {
