@@ -64,6 +64,13 @@ header h1 {
 
 /* artist card  */
 
+.artist-card-container {
+  margin: 50px 0;
+  display: grid;
+  gap: 40px 0;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .artist-card {
   background-color: var(--light-gray);
   width: 300px;
@@ -71,6 +78,7 @@ header h1 {
   border-radius: 12px;
   transition: var(--motion);
   position: relative;
+  justify-self: center;
 }
 
 .image-container {
