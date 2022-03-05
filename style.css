@@ -207,8 +207,10 @@ header h1 {
 }
 
 .album-image-container img {
+  height: 100%;
   width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .album-name {

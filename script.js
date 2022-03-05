@@ -65,7 +65,11 @@ const showAlbum = ({ album }) => {
     div.innerHTML = `
         <div class="album-image-container">
           <img
-            src="${item.strAlbumThumb}"
+            src="${
+              item.strAlbumThumb
+                ? item.strAlbumThumb
+                : "https://images.macrumors.com/t/vMbr05RQ60tz7V_zS5UEO9SbGR0=/1600x900/smart/article-new/2018/05/apple-music-note.jpg"
+            }"
             alt=""
           />
         </div>
