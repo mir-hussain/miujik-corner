@@ -9,6 +9,8 @@ const handleSearch = () => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => showArtists(data));
+  const artistContainer = elementById("artists");
+  artistContainer.innerHTML = "";
 };
 
 const showArtists = (data) => {
