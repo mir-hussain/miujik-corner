@@ -64,9 +64,10 @@ header h1 {
 /* artist card  */
 
 .artist-card {
-  background-color: red;
+  background-color: var(--light-gray);
   width: 300px;
   height: 400px;
+  border-radius: 12px;
 }
 
 .image-container {
@@ -78,10 +79,12 @@ header h1 {
   justify-content: center;
   position: relative;
   transition: all ease-in-out 300ms;
+  border-radius: 12px 12px 0 0;
 }
 
 .image-container-inner {
   background-color: blue;
+  border-radius: 12px 12px 0 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -89,16 +92,17 @@ header h1 {
 }
 
 .image-container-inner img {
-  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
 .artist-card:hover .image-container-inner {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   border-radius: 50%;
 }
 
 .artist-card:hover .image-container {
   height: 200px;
+  padding: 100px 0;
 }
