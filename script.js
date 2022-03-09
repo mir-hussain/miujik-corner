@@ -2,17 +2,23 @@ const elementById = (id) => {
   return document.getElementById(id);
 };
 
-const handleSearch = () => {
+const cleanUp = () => {
   const keyword = elementById("keyword");
   const artistContainer = elementById("artists");
   const albumContainer = elementById("albums");
+
+  artistContainer.innerHTML = "";
+  albumContainer.innerHTML = "";
+  keyword.value = "";
+};
+
+const handleSearch = () => {
+  const keyword = elementById("keyword");
   const url = `https://theaudiodb.com/api/v1/json/2/search.php?s=${keyword.value}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => showArtists(data));
-  artistContainer.innerHTML = "";
-  albumContainer.innerHTML = "";
-  keyword.value = "";
+  cleanUp();
 };
 
 const showArtists = (data) => {
@@ -52,8 +58,7 @@ const fetchAlbums = (id) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => showAlbum(data));
-  const artistContainer = elementById("artists");
-  artistContainer.innerHTML = "";
+  cleanUp();
 };
 
 const showAlbum = ({ album }) => {
@@ -62,6 +67,7 @@ const showAlbum = ({ album }) => {
     console.log(item);
     const div = document.createElement("div");
     div.classList.add("album");
+    div.setAttribute("onclick", `handleAlbumClick('${item.idAlbum}')`);
     div.innerHTML = `
         <div class="album-image-container">
           <img
@@ -80,4 +86,11 @@ const showAlbum = ({ album }) => {
 
     albumContainer.appendChild(div);
   });
+};
+
+let playList = [];
+
+const handleAlbumClick = (id) => {
+  playList.push(id);
+  console.log(playList);
 };
